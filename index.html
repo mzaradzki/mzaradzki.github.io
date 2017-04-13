@@ -115,6 +115,9 @@
                     edges: edges
                 };
 
+                var seeds = [926571, 948025, 520343, 331238, 285908]; // INFO : when random use network.getSeed() in console
+                var seed = seeds[Math.floor(Math.random()*seeds.length)];
+
                 var options = {
                     edges: {
                         smooth: {
@@ -123,12 +126,13 @@
                             roundness: 0.4
                         }
                     },
-                    /*layout: {
-                        hierarchical: {
+                    layout: {
+                        randomSeed: seed,
+                        /*hierarchical: {
                             direction: 'DU',
                             sortMethod: 'directed'
-                        }
-                    },*/
+                        }*/
+                    },
                     physics: {
                         enabled: true
                     },
