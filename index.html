@@ -120,6 +120,9 @@
                     physics: {
                         enabled: true
                     },
+                    interaction:{
+                    	hover: true
+                    },
                 };
                 network = new vis.Network(container, data, options);
 
@@ -127,7 +130,7 @@
                 network.on('select', function (params) {
                     document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
                 });
-                network.on("selectNode", function (params) {
+                network.on('selectNode', function (params) {
 			        if (params.nodes.length === 1) {
 			            var node = nodes.get(params.nodes[0]);
 			            if (node.url)
@@ -136,6 +139,9 @@
 			            }
 			        }
 			    });
+			    /*network.on('hoverNode', function (params) {
+			        console.log('hoverNode Event:', params);
+			    });*/
             }
 
         </script>
