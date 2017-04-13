@@ -74,20 +74,20 @@
                 }*/
                 // create an array with nodes
 				 var nodes = new vis.DataSet([
-				    {id: 1, label: 'Medium'},
-				    {id: 2, label: 'Mathieu Zaradzki'},
-				    {id: 3, label: 'LinkedIn'},
-				    {id: 4, label: 'GitHub'},
-				    {id: 5, label: 'Twitter'},
-				    {id: 6, label: 'CV'},
+				    {id: 1, label: 'Mathieu Zaradzki', url: null},
+				    {id: 2, label: 'LinkedIn', url: 'https://www.linkedin.com/in/mathieuzaradzki/'},
+				    {id: 3, label: 'GitHub', url: 'https://github.com/mzaradzki'},
+				    {id: 4, label: 'Twitter', url: 'https://twitter.com/centsandsums'},
+				    //{id: 5, label: 'CV', url: null},
+				    {id: 6, label: 'Medium', url: 'https://medium.com/@m.zaradzki/'},
 				 ]);
 				 // create an array with edges
 				 var edges = new vis.DataSet([
-				    {from: 2, to: 1},
-				    {from: 2, to: 3},
-				    {from: 2, to: 4},
-				    {from: 2, to: 5},
-				    {from: 2, to: 6},
+				    {from: 1, to: 2},
+				    {from: 1, to: 3},
+				    {from: 1, to: 4},
+				    //{from: 1, to: 5},
+				    {from: 1, to: 6},
 				 ]);
 
                 // create a network
@@ -121,6 +121,15 @@
                 network.on('select', function (params) {
                     document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
                 });
+                network.on("selectNode", function (params) {
+			        if (params.nodes.length === 1) {
+			            var node = nodes.get(params.nodes[0]);
+			            if (node.url)
+			            {
+			            	window.open(node.url, '_self');
+			            }
+			        }
+			    });
             }
 
         </script>
